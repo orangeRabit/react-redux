@@ -28,6 +28,19 @@
   color: #61dafb;
 }
 
+
+.menu {
+  width: 1000px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  background: darkkhaki;
+  height: 50px;
+  margin: 0 auto;
+}
+
+
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

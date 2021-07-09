@@ -10,7 +10,10 @@ import {Provider} from "react-redux";
 const initialSate = {
     counter: {
         value: 0
-    }
+    },
+    users: [],
+    posts: [],
+    comments: []
 }
 
 const reducer = (state = initialSate, action) => {
@@ -47,6 +50,28 @@ const reducer = (state = initialSate, action) => {
                 counter: {
                     value: state.counter.value + action.payload
                 }
+            }
+        }
+
+        case 'USERS_LIST': {
+            return {
+                ...state,
+                users: action.payload
+
+            }
+        }
+        case 'POSTS_LIST': {
+            return {
+                ...state,
+                posts: action.payload
+
+            }
+        }
+        case 'COMMENTS_LIST': {
+            return {
+                ...state,
+                comments: action.payload
+
             }
         }
         default:
