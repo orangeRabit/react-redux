@@ -3,6 +3,27 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import {createStore} from "redux";
+
+const initialSate = {
+    counter: {
+        value: 0
+    }
+}
+
+const reducer = (state = initialSate, action) => {
+    console.log({state, action})
+    switch (action.type) {
+        case 'INC': {
+            return {}
+        }
+        default:
+            return state
+    }
+}
+
+const store = createStore(reducer)
+console.log(store.getState());
 
 ReactDOM.render(
   <React.StrictMode>
