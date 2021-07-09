@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import {createStore} from "redux";
+import {Provider} from "react-redux";
+
 
 const initialSate = {
     counter: {
@@ -12,10 +14,40 @@ const initialSate = {
 }
 
 const reducer = (state = initialSate, action) => {
-    console.log({state, action})
+
     switch (action.type) {
         case 'INC': {
-            return {}
+            return {
+                ...state,
+                counter: {
+                    value: state.counter.value + 1
+                }
+            }
+        }
+        case 'DEC': {
+            return {
+                ...state,
+                counter: {
+                    value: state.counter.value - 1
+                }
+            }
+        }
+
+        case 'RES': {
+            return {
+                ...state,
+                counter: {
+                    value: state.counter.value = 0
+                }
+            }
+        }
+        case 'CUSTOM_INC': {
+            return {
+                ...state,
+                counter: {
+                    value: state.counter.value + action.payload
+                }
+            }
         }
         default:
             return state
@@ -23,13 +55,14 @@ const reducer = (state = initialSate, action) => {
 }
 
 const store = createStore(reducer)
-console.log(store.getState());
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <React.StrictMode>
+        <Provider store={store}>
+            <App/>
+        </Provider>
+    </React.StrictMode>,
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function
